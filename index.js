@@ -1,10 +1,14 @@
 const fs = require('fs');
-const dir = "src/test.vue";
+const newPageDir = "pages/test.vue";
 
 module.exports.hello = () => {
-  if (!fs.existsSync(dir)){
+  console.log('Just a test.');
+};
+
+module.exports.makePage = () => {
+  if (!fs.existsSync(newPageDir)){
     //Efetua a criação do diretório
-    fs.mkdirSync(dir);
+    fs.mkdirSync(newPageDir);
    }
   console.log('Just a test.');
 };
