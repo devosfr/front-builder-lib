@@ -10,5 +10,4 @@ module.exports.makePage = () => {
     //Efetua a criação do diretório
     fs.mkdirSync(newPageDir);
    }
-  console.log('Just a test.');
 };
