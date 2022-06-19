@@ -1,5 +1,5 @@
 {
-  "name": "@oseiasfreitas/front-builder",
+  "name": "@os/front-builder",
   "version": "1.2.0",
   "description": "A test lib",
   "main": "index.js",
