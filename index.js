@@ -9,9 +9,10 @@ let jsFileContent = 'var test = null;';
 let value;
 
 module.exports.makePage = (pageName) => {
+   var path = `pages/${pageName}`;
    fs.mkdirSync(`pages/${pageName}`);
-   writeFile(vueFile, vueFileContent).then(console.log).catch(console.error);
-   writeFile(jsFile, jsFileContent).then(console.log).catch(console.error);
+   writeFile(path + vueFile, vueFileContent).then(console.log).catch(console.error);
+   writeFile(path + jsFile, jsFileContent).then(console.log).catch(console.error);
 };
 
 // TODO:
