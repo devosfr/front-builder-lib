@@ -3,9 +3,9 @@ const {writeFile} = require('fs/promises');
 const newPageDir = "pages/test.vue";
 const entry = require('prompt-sync')({sigint: true});
 let vueFile = 'index.vue';
-let vueFileContent = '<template><h1>Test</h1></template><script type="text/javascript" src="./script.js" /><style scoped type="text/css" src="./style.css" />';
+let vueFileContent = '<template><br><h1>Test</h1><br></template><br><br><script type="text/javascript" src="./script.js" /><br><style scoped type="text/css" src="./style.css" />';
 let jsFile = 'script.js';
-let jsFileContent = "import { mapActions, mapState } from 'vuex' ; export default {}";
+let jsFileContent = "import { mapActions, mapState } from 'vuex' ;<br> export default {}";
 let value;
 
 module.exports.makePage = (pageName) => {
