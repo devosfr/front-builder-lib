@@ -10,16 +10,46 @@ let styleFile = 'style.css';
 let value;
 
 module.exports.makePage = (pageName) => {
-   var path = `pages/${pageName}/`;
-   fs.mkdirSync(`pages/${pageName}`);
-   writeFile(path + vueFile, vueFileContent).then(() => {console.log('sucess!!')})
-   .catch((error) => {console.error('Error!!')});
-  
-   writeFile(path + jsFile, jsFileContent).then(() => {console.log('sucess!!')})
-   .catch((error) => {console.error('Error!!')});
+   var path;
+   var lastPosition;
+   var lastFolder;
+   var count;
+   if (pageName.indexOf('/') > -1) {
+      var folders = pageName.split('/');
+      count = folders.length;
+      folders.forEach((folder, index) => {
+         switch (true) {
+            case index > lastPosition:
+               path = `pages/${lastFolder}/${folder}/`;
+               console.log(path);
+               fs.mkdirSync(path);
+               writeFile(path + vueFile, vueFileContent);
+               writeFile(path + jsFile, jsFileContent);
+               writeFile(path + styleFile, '');
+               break;
 
-   writeFile(path + styleFile, '').then(() => {console.log('sucess!!')})
-   .catch((error) => {console.error('Error!!')});
+            default:
+               path = `pages/${folder}/`;
+               console.log(path);
+               fs.mkdirSync(path);
+               writeFile(path + vueFile, vueFileContent);
+               writeFile(path + jsFile, jsFileContent);
+               writeFile(path + styleFile, '');
+               break;
+         }
+
+         lastPosition = index;
+         lastFolder = folder
+      });
+   } else {
+      console.log('Não possui');
+      path = `pages/${pageName}/`;
+      fs.mkdirSync(path);
+      writeFile(path + vueFile, vueFileContent);
+      writeFile(path + jsFile, jsFileContent);
+      writeFile(path + styleFile, '');
+   }
+
 };
 
 // TODO:
