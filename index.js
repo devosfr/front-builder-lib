@@ -9,19 +9,23 @@ let jsFileContent = "import { mapActions, mapState } from 'vuex' ;\n\n export de
 let styleFile = 'style.css';
 let value;
 
-module.exports.makePage = (pageName) => {
+module.exports.makePage = (pageName, mainPage) => {
    var path;
    var lastPosition;
    var lastFolder;
    var count;
+   console.log(mainPage);
+   if (mainPage !== 'pages' && mainPage !== 'components') {
+      console.log('Invalid main folder name, please write pages or components to be the main page.');
+      return null
+   }
    if (pageName.indexOf('/') > -1) {
       var folders = pageName.split('/');
       count = folders.length;
       folders.forEach((folder, index) => {
          switch (true) {
             case index > lastPosition:
-               path = `pages/${lastFolder}/${folder}/`;
-               console.log(path);
+               path = `${mainPage}/${lastFolder}/${folder}/`;
                fs.mkdirSync(path);
                writeFile(path + vueFile, vueFileContent);
                writeFile(path + jsFile, jsFileContent);
@@ -29,8 +33,7 @@ module.exports.makePage = (pageName) => {
                break;
 
             default:
-               path = `pages/${folder}/`;
-               console.log(path);
+               path = `${mainPage}/${folder}/`;
                fs.mkdirSync(path);
                writeFile(path + vueFile, vueFileContent);
                writeFile(path + jsFile, jsFileContent);
@@ -42,8 +45,7 @@ module.exports.makePage = (pageName) => {
          lastFolder = folder
       });
    } else {
-      console.log('Não possui');
-      path = `pages/${pageName}/`;
+      path = `${mainPage}/${pageName}/`;
       fs.mkdirSync(path);
       writeFile(path + vueFile, vueFileContent);
       writeFile(path + jsFile, jsFileContent);
