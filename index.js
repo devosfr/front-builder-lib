@@ -25,6 +25,7 @@ module.exports.makePage = (pageName, mainPage) => {
       folders.forEach((folder, index) => {
          switch (true) {
             case index > lastPosition:
+               // console.log('TESTE 1');
                path = `${mainPage}/${lastFolder}/${folder}/`;
                fs.mkdirSync(path);
                writeFile(path + vueFile, vueFileContent);
@@ -33,6 +34,8 @@ module.exports.makePage = (pageName, mainPage) => {
                break;
 
             default:
+               // Está caindo aqui
+               // console.log('TESTE 2');
                path = `${mainPage}/${folder}/`;
                fs.mkdirSync(path);
                writeFile(path + vueFile, vueFileContent);
