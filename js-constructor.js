@@ -16,53 +16,6 @@ let tsFileContent = "import { defineComponent } from 'vue';\n\n export default d
 let styleFile = 'style.css';
 let value;
 
-module.exports.jsMakePage = (pageName, mainPage) => {
-   var path;
-   var lastPosition;
-   var lastFolder;
-   var count;
-   console.log(mainPage);
-   if (mainPage !== 'pages' && mainPage !== 'components') {
-      console.log('Invalid main folder name, please write pages or components to be the main page.');
-      return null
-   }
-   if (pageName.indexOf('/') > -1) {
-      var folders = pageName.split('/');
-      count = folders.length;
-      folders.forEach((folder, index) => {
-         switch (true) {
-            case index > lastPosition:
-               // console.log('TESTE 1');
-               path = `${mainPage}/${lastFolder}/${folder}/`;
-               fs.mkdirSync(path);
-               writeFile(path + vueFile, vueFileContent);
-               writeFile(path + jsFile, jsFileContent);
-               writeFile(path + styleFile, '');
-               break;
-
-            default:
-               // Está caindo aqui
-               // console.log('TESTE 2');
-               path = `${mainPage}/${folder}/`;
-               fs.mkdirSync(path);
-               writeFile(path + vueFile, vueFileContent);
-               writeFile(path + jsFile, jsFileContent);
-               writeFile(path + styleFile, '');
-               break;
-         }
-
-         lastPosition = index;
-         lastFolder = folder
-      });
-   } else {
-      path = `${mainPage}/${pageName}/`;
-      fs.mkdirSync(path);
-      writeFile(path + vueFile, vueFileContent);
-      writeFile(path + jsFile, jsFileContent);
-      writeFile(path + styleFile, '');
-   }
-
-};
 
 module.exports.tsMakePage = (pageName, mainPage) => {
    var path;
