@@ -4,10 +4,10 @@ let value= null;
 let main = null;
 let type = null;
 
-value = entry('Enter the directory hierarchy: ');
+value = entry('Git a name to the folder: ');
 console.log('Hierarchy: ' + value);
 
-main = entry('Enter the directory main folder: ');
+main = entry('Where doyou want to creeate? (for example pages, components...): ');
 console.log('Main folder: ' + main);
 
 type = entry('Write js to javascript or ts to typescript (js/ts): ');

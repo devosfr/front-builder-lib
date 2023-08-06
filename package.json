@@ -1,6 +1,6 @@
 {
   "name": "@oseiasfreitas/front-builder",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "description": "A test lib",
   "main": "index.js",
   "scripts": {
