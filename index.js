@@ -13,7 +13,7 @@ let jsFile = 'script.js';
 let jsFileContent = "import { mapActions, mapState } from 'vuex' ;\n\n export default {}";
 
 // ts
-let tsVueFileContentWithScript = '<script setup lang="ts">\n</script><template>\n<h1>Just a simple text</h1>\n</template>\n<style scoped type="text/css" src="./style.css" />';
+let tsVueFileContentWithScript = '<script setup lang="ts">\n</script>\n<template>\n<h1>Just a simple text</h1>\n</template>\n<style scoped type="text/css" src="./style.css" />';
 let tsVueFileContent = '<template>\n<h1>Just a simple text</h1>\n</template>\n\n<script lang="ts" src="./script.ts" />\n<style scoped type="text/css" src="./style.css" />';
 let tsFile = 'script.ts';
 let tsFileContent = "import { defineComponent } from 'vue';\n\n export default defineComponent({})";
