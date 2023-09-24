@@ -18,6 +18,13 @@ console.log('Type picked: ' + type);
 if (type === 'js') {
   Build.jsMakePage(value, main);
 } else if (type === 'ts') {
+
+  // TODO: Chose 1 to typscript and html in the same file or 2 to use in separate files
+  const sameFile = entry('Chose 1 to typscript and html in the same file or 2 to use in separate files: ');
+  console.log('Chosed: ' + sameFile);
+if (sameFile) {
+  Build.tsMakePage(value, main, sameFile);
+}
   Build.tsMakePage(value, main);
 } else {
   console.log('Chose a correct type, please..');

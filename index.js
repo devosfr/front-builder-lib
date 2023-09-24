@@ -1,7 +1,11 @@
 const fs = require('fs');
-const {writeFile} = require('fs/promises');
+const {
+   writeFile
+} = require('fs/promises');
 const newPageDir = "pages/test.vue";
-const entry = require('prompt-sync')({sigint: true});
+const entry = require('prompt-sync')({
+   sigint: true
+});
 let vueFile = 'index.vue';
 // js
 let vueFileContent = '<template>\n<h1>Just a simple text</h1>\n</template>\n\n<script type="text/javascript" src="./script.js" />\n<style scoped type="text/css" src="./style.css" />';
@@ -9,6 +13,7 @@ let jsFile = 'script.js';
 let jsFileContent = "import { mapActions, mapState } from 'vuex' ;\n\n export default {}";
 
 // ts
+let tsVueFileContentWithScript = '<script setup lang="ts"><><template>\n<h1>Just a simple text</h1>\n</template>\n<style scoped type="text/css" src="./style.css" />';
 let tsVueFileContent = '<template>\n<h1>Just a simple text</h1>\n</template>\n\n<script lang="ts" src="./script.ts" />\n<style scoped type="text/css" src="./style.css" />';
 let tsFile = 'script.ts';
 let tsFileContent = "import { defineComponent } from 'vue';\n\n export default defineComponent({})";
@@ -64,7 +69,11 @@ module.exports.jsMakePage = (pageName, mainPage) => {
 
 };
 
-module.exports.tsMakePage = (pageName, mainPage) => {
+module.exports.tsMakePage = (pageName, mainPage, sameFile) => {
+
+   const _tsVueFileContent = sameFile === '1' ? tsVueFileContentWithScript : tsVueFileContent;
+
+   // tsVueFileContentWithScript
    var path;
    var lastPosition;
    var lastFolder;
@@ -81,19 +90,22 @@ module.exports.tsMakePage = (pageName, mainPage) => {
          switch (true) {
             case index > lastPosition:
                // console.log('TESTE 1');
+               alert('a');
                path = `${mainPage}/${lastFolder}/${folder}/`;
                fs.mkdirSync(path);
                // mark
-               writeFile(path + vueFile, tsVueFileContent);
-               writeFile(path + tsFile, tsFileContent);
+               writeFile(path + vueFile, _tsVueFileContent);
+               (sameFile === '2') && (writeFile(path + tsFile, tsFileContent));
                writeFile(path + styleFile, '');
                break;
 
             default:
+               alert('b');
+
                path = `${mainPage}/${folder}/`;
                fs.mkdirSync(path);
-               writeFile(path + vueFile, tsVueFileContent);
-               writeFile(path + tsFile, tsFileContent);
+               writeFile(path + vueFile, _tsVueFileContent);
+               (sameFile === '2') && (writeFile(path + tsFile, tsFileContent));
                writeFile(path + styleFile, '');
                break;
          }
@@ -102,11 +114,12 @@ module.exports.tsMakePage = (pageName, mainPage) => {
          lastFolder = folder
       });
    } else {
+      alert('c');
+
       path = `${mainPage}/${pageName}/`;
       fs.mkdirSync(path);
-      writeFile(path + vueFile, tsVueFileContent);
-      writeFile(path + tsFile, tsFileContent);
+      writeFile(path + vueFile, _tsVueFileContent);
+      (sameFile === '2') && (writeFile(path + tsFile, tsFileContent));
       writeFile(path + styleFile, '');
    }
-
 };
