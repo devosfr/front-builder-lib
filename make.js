@@ -22,10 +22,16 @@ if (type === 'js') {
   // TODO: Chose 1 to typscript and html in the same file or 2 to use in separate files
   const sameFile = entry('Chose 1 to typscript and html in the same file or 2 to use in separate files: ');
   console.log('Chosed: ' + sameFile);
-if (sameFile) {
-  Build.tsMakePage(value, main, sameFile);
-}
-  Build.tsMakePage(value, main);
+
+  switch (true) {
+    case sameFile === '1' || sameFile === '2':
+      Build.tsMakePage(value, main, sameFile);
+      break;
+    default:
+      console.log('Please, insert 1 or 2 value');
+      break;
+  }
+
 } else {
   console.log('Chose a correct type, please..');
   type = entry('Write js to javascript or ts to typescript (js/ts): ');

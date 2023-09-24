@@ -90,7 +90,6 @@ module.exports.tsMakePage = (pageName, mainPage, sameFile) => {
          switch (true) {
             case index > lastPosition:
                // console.log('TESTE 1');
-               alert('a');
                path = `${mainPage}/${lastFolder}/${folder}/`;
                fs.mkdirSync(path);
                // mark
@@ -100,7 +99,6 @@ module.exports.tsMakePage = (pageName, mainPage, sameFile) => {
                break;
 
             default:
-               alert('b');
 
                path = `${mainPage}/${folder}/`;
                fs.mkdirSync(path);
@@ -114,8 +112,6 @@ module.exports.tsMakePage = (pageName, mainPage, sameFile) => {
          lastFolder = folder
       });
    } else {
-      alert('c');
-
       path = `${mainPage}/${pageName}/`;
       fs.mkdirSync(path);
       writeFile(path + vueFile, _tsVueFileContent);
