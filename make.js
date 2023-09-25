@@ -6,7 +6,7 @@ let value = null;
 let main = null;
 let type = null;
 
-value = entry('Git a name to the folder: ');
+value = entry('Give a name to the folder: ');
 console.log('Hierarchy: ' + value);
 
 main = entry('Where do you want to create? (for example pages, components...): ');
