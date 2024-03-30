@@ -1,0 +1,5 @@
+{
+    "body": [
+        "<template>\n\t\t<h1>Just a simple text</h1>\n</template>\n\n<script type='text/javascript' src='./script.js' />\n<style scoped type='text/css' src='./style.css' />"
+    ]
+}

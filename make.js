@@ -5,6 +5,7 @@ const entry = require('prompt-sync')({
 let value = null;
 let main = null;
 let type = null;
+let componentQuestionResponse = null;
 
 value = entry('Give a name to the folder: ');
 console.log('Hierarchy: ' + value);
@@ -14,6 +15,9 @@ console.log('Main folder: ' + main);
 
 type = entry('Write js to javascript or ts to typescript (js/ts): ');
 console.log('Type picked: ' + type);
+
+componentQuestionResponse = entry('Do you want to use a component? (y/n): ');
+console.log('Type picked: ' + componentQuestionResponse);
 
 if (type === 'js') {
   Build.jsMakePage(value, main);

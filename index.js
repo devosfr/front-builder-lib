@@ -1,4 +1,8 @@
 const fs = require('fs');
+const vueFileContentHtmlBody = require('./templates/js/html.json');
+const vueFileContentJsBody = require('./templates/js/js.json');
+console.log('TEST: ', JSON.stringify(vueFileContentHtmlBody.body));
+debugger;
 const {
    writeFile
 } = require('fs/promises');
@@ -8,9 +12,9 @@ const entry = require('prompt-sync')({
 });
 let vueFile = 'index.vue';
 // js
-let vueFileContent = '<template>\n\t<h1>Just a simple text</h1>\n</template>\n\n<script type="text/javascript" src="./script.js" />\n<style scoped type="text/css" src="./style.css" />';
+let vueFileContent = JSON.stringify(vueFileContentHtmlBody.body);
 let jsFile = 'script.js';
-let jsFileContent = "import { mapActions, mapState } from 'vuex' ;\n\n export default {}";
+let jsFileContent = JSON.stringify(vueFileContentJsBody.body);
 
 // ts
 let tsVueFileContentWithScript = '<script setup lang="ts">\n</script>\n<template>\n\t<h1>Just a simple text</h1>\n</template>\n<style scoped type="text/css" src="./style.css" />';
@@ -25,7 +29,7 @@ module.exports.jsMakePage = (pageName, mainPage) => {
    var path;
    var lastPosition;
    var lastFolder;
-   var count;
+   // var count;
    console.log(mainPage);
    if (mainPage !== 'pages' && mainPage !== 'components') {
       console.log('Invalid main folder name, please write pages or components to be the main page.');
