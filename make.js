@@ -1,4 +1,9 @@
-const Build = require('@oseiasdev/front-builder');
+// comment just before upload de code.
+const Build = require('./index.js');
+
+// uncomment just before upload de code.
+// const Build = require('@oseiasdev/front-builder');
+const componentsList = require('./templates/components.json');
 const entry = require('prompt-sync')({
   sigint: true
 });
@@ -17,8 +22,20 @@ type = entry('Write js to javascript or ts to typescript (js/ts): ');
 console.log('Type picked: ' + type);
 
 componentQuestionResponse = entry('Do you want to use a component? (y/n): ');
-console.log('Type picked: ' + componentQuestionResponse);
+console.log('TEST: XXX', componentQuestionResponse);
+if (componentQuestionResponse === 'y') {
+  // console.log('components list: ' + JSON.stringify(componentsList.components));
+  const choice = entry('Write 1, 2 or 3, etc... to choice a component: ');
 
+  const component = componentsList.components.find(co => co.id === parseInt(choice));
+
+  Build.makeByComponent({
+    pageName: value,
+    mainPage: main,
+    componentChoice: component
+  });
+  return;
+}
 if (type === 'js') {
   Build.jsMakePage(value, main);
 } else if (type === 'ts') {
