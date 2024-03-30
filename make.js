@@ -1,8 +1,8 @@
 // comment just before upload de code.
-const Build = require('./index.js');
+// const Build = require('./index.js');
 
 // uncomment just before upload de code.
-// const Build = require('@oseiasdev/front-builder');
+const Build = require('@oseiasdev/front-builder');
 const componentsList = require('./templates/components.json');
 const entry = require('prompt-sync')({
   sigint: true
