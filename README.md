@@ -1,6 +1,6 @@
 
 
-- 🧑‍💻 Criei esta bibliotéca opensource para ser utilizada tanto no Nuxt2 quanto Nuxt3 (Vue), pensando em auxiliar e otimizar o desenvolvimento no lado do cliente. Com ela é possível criar páginas e componentes com poucos comandos de prompt.
+- 🧑‍💻 Criei esta bibliotéca open-source para ser utilizada tanto no Nuxt2 quanto Nuxt3 (Vue), pensando em auxiliar e otimizar o desenvolvimento no lado do cliente. Com ela é possível criar páginas e componentes com poucos comandos de prompt.
 
 - I created this library to be used with both Nuxt 2 and Nuxt 3 (Vue), aiming to assist and optimize client-side development. With it, it's possible to create pages and components with just a few prompt commands.
 
