@@ -25,7 +25,7 @@
 $ npm install  @oseiasdev/front-builder
 
 # run this script 
-$ npm run make
+$ front-builder init
 
 # Add this line bellow in package.json scripts:
 # "make": "node node_modules/@oseiasdev/front-builder/make.js
